@@ -11,11 +11,6 @@ router.get '/', (req, res) ->
     })
 
 router.post '/execute', (req, res) ->
-    q = JSON.parse(req.body.data).query
-    req.db.execute(q, (err, data) ->
-        return res.send({ status: false, data: JSON.stringify(err) }) if err?
-        res.json({ success: true, data: JSON.stringify(data) })
-    )
-
+    req.db.execute(req.json().query, res.sendDataOrError)
 
 module.exports = router

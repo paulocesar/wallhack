@@ -31,6 +31,14 @@ app.use(express.static(path.join(__dirname, 'src', 'public')))
 #add db and default in middleware
 app.use((req, res, next) ->
     req.db = msSql
+
+    req.json = () -> JSON.parse(req.body.data)
+
+    res.sendDataOrError = (err, data) ->
+        return res.send({ status: false, data: JSON.stringify(err) }) if err?
+        res.json({ success: true, data: JSON.stringify(data) })
+
+
     next()
 )
 
