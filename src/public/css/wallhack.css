@@ -1,0 +1,19 @@
+#wallhack #sqlEditor {
+    width: 100%;
+    height: 400px;
+}
+
+#wallhack #sqlResponse {
+    width: 100%;
+    height: 250px;
+    overflow: scroll;
+}
+
+#wallhack #sqlResponse table th,
+#wallhack #sqlResponse table td {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    padding: 3px;
+    white-space: nowrap;
+    border-top: 1px solid #F0F0F0;
+}

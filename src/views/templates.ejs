@@ -1,0 +1,33 @@
+<script type='template' id='tpl-index' class='tpl'>
+    <div class='row-fluid'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <div id='editor'>
+                <button class="execute">Run</button>
+            </div>
+            <div id='sqlEditor'></div>
+            <div id='sqlResponse'></div>
+        </div>
+    </div>
+</script>
+
+<script type='template' id='tpl-response' class='tpl'>
+    {% if(_.isEmpty(lines)) { %}
+        {%= 'no lines' %}
+    {% return; } %}
+    <table>
+        <tr>
+            {% _.each(_.keys(lines[0]), function(k) { %}
+                <th>{%= k %}</th>
+            {% }); %}
+        </tr>
+
+        {% _.each(lines, function (l) { %}
+            <tr>
+                {% _.each(l, function (value) { %}
+                    <td>{%= value %}</td>
+                {% }); %}
+            </tr>
+        {% }); %}
+    </table>
+</script>
