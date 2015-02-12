@@ -9,7 +9,9 @@ session = require('cookie-session')
 config = require('./config')
 MsSql = require('./src/adapters/mssql')
 msSql = new MsSql(config.mssql)
-msSql.connect(() -> console.log('connected'))
+
+#TODO: this is not good =/, think a better way to do it
+msSql.connect(() ->)
 
 routes = require('./src/routes/index')
 

@@ -12,14 +12,14 @@ Wallhack = {
 
     components: {}
 
-    init: () ->
+    init: (callback) ->
         $('.tpl').each(() ->
             $el = $(@)
             name = $el.attr('id').replace 'tpl-', ''
             Wallhack.tpls[name] = _.template($el.html())
         )
 
-        @render('index')
+        callback()
 
     render: (name) ->
         data = @tpls[name]
@@ -42,7 +42,5 @@ Wallhack = {
 
     evalResponse: (response) -> ( new Function("return #{response}") )()
 }
-
-Wallhack.init()
 
 jsRoot.Wallhack = Wallhack

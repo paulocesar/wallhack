@@ -11,14 +11,14 @@
     container: $('#wallhack'),
     tpls: {},
     components: {},
-    init: function() {
+    init: function(callback) {
       $('.tpl').each(function() {
         var $el, name;
         $el = $(this);
         name = $el.attr('id').replace('tpl-', '');
         return Wallhack.tpls[name] = _.template($el.html());
       });
-      return this.render('index');
+      return callback();
     },
     render: function(name) {
       var data;
@@ -51,8 +51,6 @@
       return (new Function("return " + response))();
     }
   };
-
-  Wallhack.init();
 
   jsRoot.Wallhack = Wallhack;
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env coffee
-debug = require('debug')('konsil')
+debug = require('debug')
 app = require('../app')
 
 app.set('port', process.env.PORT || 3535)
 
 server = app.listen(app.get('port'), () ->
-  debug('Express server listening on port ' + server.address().port)
+  console.log('Express server listening on port ' + server.address().port)
 )
