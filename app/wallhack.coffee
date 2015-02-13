@@ -29,7 +29,13 @@ Wallhack = {
 
         @container.html(data)
 
-    execute: (query, callback) -> Wallhack.post 'execute', { query }, callback
+    execute: (query, callback) -> @post 'execute', { query }, callback
+
+    # TODO: move to another place
+    list: (callback) -> @post 'scripts/list', {}, callback
+    create: (data, callback) -> @post 'scripts/create', data, callback
+    update: (data, callback) -> @post 'scripts/update', data, callback
+    delete: (data, callback) -> @post 'scripts/delete', data, callback
 
     post: (action, data, callback) ->
         $.post "/#{action}", {data: JSON.stringify(data)}, (raw) =>

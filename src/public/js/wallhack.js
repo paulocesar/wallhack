@@ -29,9 +29,21 @@
       return this.container.html(data);
     },
     execute: function(query, callback) {
-      return Wallhack.post('execute', {
+      return this.post('execute', {
         query: query
       }, callback);
+    },
+    list: function(callback) {
+      return this.post('scripts/list', {}, callback);
+    },
+    create: function(data, callback) {
+      return this.post('scripts/create', data, callback);
+    },
+    update: function(data, callback) {
+      return this.post('scripts/update', data, callback);
+    },
+    "delete": function(data, callback) {
+      return this.post('scripts/delete', data, callback);
     },
     post: function(action, data, callback) {
       return $.post("/" + action, {
